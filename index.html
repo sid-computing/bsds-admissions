@@ -25,6 +25,72 @@
 
   <style>
     /* =========================================
+   DETAILED ADMISSION RULES
+   ========================================= */
+
+.admission-list {
+  margin: 18px 0 24px;
+  padding-left: 22px;
+}
+
+.admission-list li {
+  margin-bottom: 10px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.information-box h3:not(:first-of-type) {
+  margin-top: 32px;
+}
+
+.formula-box {
+  margin: 22px 0;
+  padding: 20px 24px;
+  overflow-x: auto;
+  background: var(--midnight);
+  color: var(--white);
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.ranking-summary {
+  margin: 36px 0;
+  padding: clamp(24px, 4vw, 36px);
+  border: 2px solid var(--midnight);
+}
+
+.ranking-summary ol {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.ranking-summary li {
+  padding: 10px 0 16px 8px;
+  line-height: 1.7;
+}
+
+.ranking-summary li:last-child {
+  padding-bottom: 0;
+}
+
+.ranking-summary strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 600px) {
+  .formula-box {
+    padding: 18px;
+    font-size: 0.82rem;
+  }
+
+  .ranking-summary {
+    padding: 22px;
+  }
+}
+    /* =========================================
        BASIC SETTINGS
        ========================================= */
 
@@ -459,67 +525,154 @@
     }
 
 
-    /* =========================================
-       ADMISSIONS
-       ========================================= */
+<!-- ADMISSIONS -->
+<section class="split" id="admissions">
+  <div>
+    <p class="label">01 / Admissions</p>
 
-    .information-box {
-      margin: 36px 0;
-      padding: clamp(24px, 4vw, 36px);
-      background: var(--silver-light);
-      border: 1px solid var(--line);
-    }
+    <h2>
+      The 2027 admission process,<br>
+      made understandable.
+    </h2>
+  </div>
 
-    .information-box h3 {
-      margin: 10px 0 16px;
-      font-family: "Newsreader", serif;
-      font-size: clamp(1.7rem, 2.5vw, 2.5rem);
-      font-weight: 500;
-      line-height: 1.15;
-    }
+  <div class="copy">
+    <p>
+      Admission to the Bachelor of Statistical Data Science programme is
+      based on the candidate’s Mathematics percentile in JEE Main or
+      CUET-UG. Candidates may submit eligible scorecards from either
+      examination.
+    </p>
 
-    .information-box p:last-child {
-      margin-bottom: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
+    <!-- ELIGIBILITY -->
+    <div class="information-box">
+      <p class="label">Eligibility for 2027 admission</p>
 
-    .process-section {
-      padding-top: 100px;
-      padding-bottom: 100px;
-      background: var(--silver-light);
-      border-top: 1px solid var(--line);
-    }
+      <h3>Class XII requirements</h3>
 
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 36px;
-    }
+      <p>
+        The candidate must have passed Class XII in either 2026 or 2027.
+      </p>
 
-    .process-grid article {
-      min-height: 300px;
-      padding: 28px;
-      background: var(--silver);
-      border: 1px solid var(--line);
-    }
+      <p>
+        The candidate must have studied and passed Mathematics, English and
+        three other subjects in Class XII, with an aggregate score of at
+        least 75%.
+      </p>
 
-    .process-grid article p {
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.7;
-    }
+      <h3>Accepted examination scorecards</h3>
 
-    .step-number {
-      display: block;
-      margin-bottom: 54px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-    }
+      <ul class="admission-list">
+        <li>JEE Main 2027</li>
+        <li>JEE Main 2026</li>
+        <li>CUET-UG 2027</li>
+        <li>CUET-UG 2026</li>
+      </ul>
+    </div>
 
+    <!-- PRIMARY SCORE -->
+    <div class="information-box">
+      <p class="label">Primary merit score</p>
+
+      <h3>
+        Q = Maximum Mathematics percentile
+      </h3>
+
+      <p>
+        The candidate’s <strong>Q score</strong> is the higher eligible
+        Mathematics percentile obtained in JEE Main or CUET-UG.
+      </p>
+
+      <div class="formula-box">
+        Q = max(JEE Main Mathematics percentile,
+        CUET-UG Mathematics percentile)
+      </div>
+
+      <p>
+        Candidates with a higher value of Q are placed higher on the
+        merit list.
+      </p>
+    </div>
+
+    <!-- TIE-BREAKING RULES -->
+    <div class="information-box">
+      <p class="label">Tie-breaking rules</p>
+
+      <h3>T₁ = Examination comparison score</h3>
+
+      <p>
+        If candidates have the same Q score, their T₁ scores are compared.
+        T₁ is defined according to the examination producing the relevant
+        admission score:
+      </p>
+
+      <ul class="admission-list">
+        <li>
+          <strong>For JEE Main:</strong> overall JEE Main percentile
+        </li>
+
+        <li>
+          <strong>For CUET-UG:</strong> English Language percentile
+        </li>
+      </ul>
+
+      <p>
+        The candidate with the <strong>higher value of T₁</strong> is placed
+        higher on the merit list.
+      </p>
+
+      <h3>T₂ = Age of the candidate</h3>
+
+      <p>
+        If the tie remains, T₂ is the candidate’s age as on
+        <strong>31 May 2027</strong>.
+      </p>
+
+      <p>
+        The candidate with the <strong>lower value of T₂</strong>—that is,
+        the younger candidate—is placed higher on the merit list.
+      </p>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="ranking-summary">
+      <p class="label">Merit-list order</p>
+
+      <ol>
+        <li>
+          <strong>Higher Q:</strong>
+          higher Mathematics percentile
+        </li>
+
+        <li>
+          <strong>Higher T₁:</strong>
+          higher overall JEE Main percentile or CUET English Language
+          percentile
+        </li>
+
+        <li>
+          <strong>Lower T₂:</strong>
+          younger candidate as on 31 May 2027
+        </li>
+      </ol>
+    </div>
+
+    <p class="source-note">
+      This is a simplified presentation of the 2027 admission rules.
+      Candidates should verify all eligibility, merit-list and scorecard
+      requirements from the official admission notice.
+    </p>
+
+    <a
+      class="text-link"
+      href="https://www.isical.ac.in/~deanweb/bsds.html"
+      target="_blank"
+      rel="noopener"
+    >
+      Visit the official BSDS webpage ↗
+    </a>
+  </div>
+</section>
 
     /* =========================================
        DARK SECTIONS
