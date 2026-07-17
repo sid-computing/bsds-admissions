@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="An unofficial student guide to ISI BSDS admissions, centres, historical data and preparation."
+    content="An unofficial student guide to BSDS admissions and student life at the ISI Delhi Centre."
   >
 
-  <title>Bachelor of Statistical Data Science | ISI Calcutta</title>
+  <title>BSDS at ISI Delhi | Unofficial Student Guide</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,21 +23,967 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* =========================================
+       BASIC SETTINGS
+       ========================================= */
+
+    :root {
+      --silver: #eceeef;
+      --silver-light: #f6f7f7;
+      --silver-dark: #d9dddf;
+      --midnight: #101a3a;
+      --midnight-light: #243154;
+      --white: #ffffff;
+      --line: rgba(16, 26, 58, 0.16);
+      --muted: #5d6578;
+      --max-width: 1440px;
+      --side-space: clamp(24px, 6vw, 96px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--silver);
+      color: var(--midnight);
+      font-family: "Manrope", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2 {
+      font-family: "Newsreader", serif;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+    }
+
+    h1 {
+      margin-bottom: 28px;
+      font-size: clamp(3.4rem, 7vw, 7rem);
+      line-height: 0.92;
+    }
+
+    h2 {
+      margin-bottom: 24px;
+      font-size: clamp(2.5rem, 4.5vw, 5rem);
+      line-height: 0.98;
+    }
+
+    h3 {
+      margin-bottom: 14px;
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    section {
+      scroll-margin-top: 100px;
+    }
+
+    .eyebrow,
+    .label {
+      margin-bottom: 18px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .label {
+      color: var(--muted);
+    }
+
+    .dark .label,
+    .dark .eyebrow {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+
+    /* =========================================
+       HEADER
+       ========================================= */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 36px;
+      width: 100%;
+      padding: 18px var(--side-space);
+      background: rgba(236, 238, 239, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+    }
+
+    .monogram {
+      display: inline-grid;
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      background: var(--midnight);
+      color: var(--white);
+      font-family: "Newsreader", serif;
+      font-size: 1.25rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: clamp(15px, 2vw, 30px);
+    }
+
+    nav a {
+      position: relative;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -6px;
+      left: 0;
+      height: 1px;
+      background: var(--midnight);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 180ms ease;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .outline-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border: 1px solid var(--midnight);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition:
+        background 180ms ease,
+        color 180ms ease;
+    }
+
+    .outline-link:hover {
+      background: var(--midnight);
+      color: var(--white);
+    }
+
+
+    /* =========================================
+       HERO
+       ========================================= */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      min-height: calc(100vh - 73px);
+      overflow: hidden;
+    }
+
+    .hero > div:first-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px var(--side-space);
+    }
+
+    .hero .eyebrow {
+      margin-bottom: 28px;
+    }
+
+    .lede {
+      max-width: 700px;
+      margin-bottom: 36px;
+      color: var(--midnight-light);
+      font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border: 1px solid var(--midnight);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition:
+        background 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      background: var(--midnight);
+      color: var(--white);
+    }
+
+    .button.primary:hover {
+      background: var(--midnight-light);
+    }
+
+    .art {
+      position: relative;
+      min-height: 500px;
+      overflow: hidden;
+      background: var(--midnight);
+    }
+
+    .rings {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(38vw, 540px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .rings::before,
+    .rings::after {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+      content: "";
+      inset: 14%;
+    }
+
+    .rings::after {
+      inset: 30%;
+    }
+
+    .orb {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18%;
+      aspect-ratio: 1;
+      background: var(--silver);
+      border-radius: 50%;
+      box-shadow: 0 0 70px rgba(255, 255, 255, 0.25);
+      transform: translate(-50%, -50%);
+    }
+
+    .dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+        rgba(255, 255, 255, 0.35) 1px,
+        transparent 1px
+      );
+      background-size: 28px 28px;
+      opacity: 0.3;
+    }
+
+
+    /* =========================================
+       COMMON SECTIONS
+       ========================================= */
+
+    .quick,
+    .split,
+    .process-section,
+    .reservation-section,
+    .delhi-section,
+    .before-section,
+    .dark {
+      padding-right: var(--side-space);
+      padding-left: var(--side-space);
+    }
+
+    .quick {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      border-top: 1px solid var(--line);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .quick-grid > * {
+      min-height: 130px;
+      padding: 24px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quick-grid a {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      transition:
+        background 180ms ease,
+        color 180ms ease;
+    }
+
+    .quick-grid a:hover {
+      background: var(--midnight);
+      color: var(--white);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(50px, 8vw, 130px);
+      padding-top: 110px;
+      padding-bottom: 110px;
+      border-top: 1px solid var(--line);
+    }
+
+    .copy {
+      max-width: 720px;
+    }
+
+    .copy > p,
+    .author > p {
+      margin-bottom: 22px;
+      font-size: 1.04rem;
+      line-height: 1.8;
+    }
+
+    .section-heading {
+      max-width: 800px;
+      margin-bottom: 50px;
+    }
+
+    .section-heading > p:not(.label) {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.8;
+    }
+
+    .text-link {
+      display: inline-block;
+      margin-top: 14px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid currentColor;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+
+    /* =========================================
+       PROGRAMME FACTS
+       ========================================= */
+
+    .programme-facts {
+      background: var(--silver-light);
+    }
+
+    .fact-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .fact-number {
+      display: block;
+      margin-bottom: 26px;
+      font-family: "Newsreader", serif;
+      font-size: clamp(2rem, 3vw, 3.5rem);
+      line-height: 1;
+    }
+
+    .fact-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+
+    /* =========================================
+       ADMISSIONS
+       ========================================= */
+
+    .information-box {
+      margin: 36px 0;
+      padding: clamp(24px, 4vw, 36px);
+      background: var(--silver-light);
+      border: 1px solid var(--line);
+    }
+
+    .information-box h3 {
+      margin: 10px 0 16px;
+      font-family: "Newsreader", serif;
+      font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .information-box p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .process-section {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      background: var(--silver-light);
+      border-top: 1px solid var(--line);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .process-grid article {
+      min-height: 300px;
+      padding: 28px;
+      background: var(--silver);
+      border: 1px solid var(--line);
+    }
+
+    .process-grid article p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .step-number {
+      display: block;
+      margin-bottom: 54px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+
+
+    /* =========================================
+       DARK SECTIONS
+       ========================================= */
+
+    .dark {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      background: var(--midnight);
+      color: var(--white);
+    }
+
+    .dark-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(50px, 8vw, 130px);
+      align-items: start;
+    }
+
+    .dark-grid > div {
+      max-width: 700px;
+    }
+
+    .dark-grid p {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    .dark-grid strong {
+      color: var(--white);
+    }
+
+    .intake-highlight {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 22px;
+      align-items: center;
+      margin-top: 36px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .intake-highlight strong {
+      font-family: "Newsreader", serif;
+      font-size: 4.5rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .intake-highlight span {
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.5;
+    }
+
+
+    /* =========================================
+       RESERVATION TABLE
+       ========================================= */
+
+    .reservation-section {
+      padding-top: 110px;
+      padding-bottom: 110px;
+      border-top: 1px solid var(--line);
+    }
+
+    .table-note {
+      margin-bottom: 20px;
+      padding: 15px 18px;
+      background: var(--silver-light);
+      border-left: 3px solid var(--midnight);
+      font-size: 0.9rem;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      background: var(--silver-light);
+      border: 1px solid var(--line);
+    }
+
+    .reservation-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+    }
+
+    .reservation-table th,
+    .reservation-table td {
+      padding: 18px 22px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+
+    .reservation-table th:last-child,
+    .reservation-table td:last-child {
+      border-right: 0;
+    }
+
+    .reservation-table thead {
+      background: var(--midnight);
+      color: var(--white);
+    }
+
+    .reservation-table tbody th {
+      font-weight: 600;
+    }
+
+    .reservation-table tbody td {
+      color: var(--muted);
+    }
+
+    .reservation-table tfoot {
+      background: var(--silver-dark);
+      font-weight: 700;
+    }
+
+    .source-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================
+       PAST DATA
+       ========================================= */
+
+    .data-links {
+      margin-top: 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .data-links a {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 19px 0;
+      border-bottom: 1px solid var(--line);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .data-links a:hover {
+      padding-left: 10px;
+    }
+
+    .data-links span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+
+    /* =========================================
+       ISI DELHI SECTION
+       ========================================= */
+
+    .delhi-section {
+      padding-top: 110px;
+      padding-bottom: 110px;
+      background: var(--silver-light);
+      border-top: 1px solid var(--line);
+    }
+
+    .delhi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .delhi-card {
+      min-height: 310px;
+      padding: clamp(28px, 4vw, 42px);
+      background: var(--silver);
+      border: 1px solid var(--line);
+    }
+
+    .delhi-card .number {
+      display: block;
+      margin-bottom: 45px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+
+    .delhi-card h3 {
+      margin-bottom: 18px;
+      font-family: "Newsreader", serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.7rem);
+      font-weight: 500;
+    }
+
+    .delhi-card p {
+      max-width: 600px;
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .delhi-card.featured {
+      background: var(--midnight);
+      color: var(--white);
+    }
+
+    .delhi-card.featured .number,
+    .delhi-card.featured p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+
+    /* =========================================
+       PREPARATION
+       ========================================= */
+
+    .before-section {
+      padding-top: 110px;
+      padding-bottom: 110px;
+      border-top: 1px solid var(--line);
+    }
+
+    .before-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(50px, 8vw, 130px);
+    }
+
+    .preparation-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .preparation-list article {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .preparation-list h3 {
+      margin-bottom: 8px;
+    }
+
+    .preparation-list p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+
+    /* =========================================
+       AUTHOR AND FOOTER
+       ========================================= */
+
+    .author {
+      max-width: 700px;
+    }
+
+    .author h3 {
+      margin-bottom: 22px;
+      font-family: "Newsreader", serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 500;
+    }
+
+    footer {
+      display: grid;
+      grid-template-columns: 0.8fr 1.4fr 0.8fr;
+      gap: 50px;
+      align-items: start;
+      padding: 50px var(--side-space);
+      background: var(--silver-dark);
+      border-top: 1px solid var(--line);
+      font-size: 0.8rem;
+    }
+
+    footer p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    footer > p {
+      text-align: right;
+    }
+
+
+    /* =========================================
+       RESPONSIVE DESIGN
+       ========================================= */
+
+    @media (max-width: 1180px) {
+      .header {
+        grid-template-columns: auto auto;
+      }
+
+      .header nav {
+        display: none;
+      }
+
+      .header .outline-link {
+        justify-self: end;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-grid article:last-child {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero > div:first-child {
+        min-height: 680px;
+      }
+
+      .art {
+        min-height: 440px;
+      }
+
+      .rings {
+        width: min(74vw, 500px);
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .split,
+      .dark-grid,
+      .before-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .delhi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      footer > p {
+        grid-column: 1 / -1;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --side-space: 22px;
+      }
+
+      html {
+        scroll-padding-top: 76px;
+      }
+
+      .header {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .header .brand span:last-child {
+        max-width: 130px;
+      }
+
+      .header .outline-link {
+        padding: 8px 10px;
+        font-size: 0.68rem;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero > div:first-child {
+        min-height: auto;
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 15vw, 4.8rem);
+      }
+
+      .art {
+        min-height: 360px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .quick,
+      .split,
+      .process-section,
+      .reservation-section,
+      .delhi-section,
+      .before-section,
+      .dark {
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+
+      .quick-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid article:last-child {
+        grid-column: auto;
+      }
+
+      .quick-grid > * {
+        min-height: 115px;
+      }
+
+      .process-grid article,
+      .delhi-card {
+        min-height: auto;
+      }
+
+      .step-number,
+      .delhi-card .number {
+        margin-bottom: 34px;
+      }
+
+      .intake-highlight {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      footer > p {
+        grid-column: auto;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="header">
     <a
       class="brand"
-      href="https://www.isical.ac.in/~deanweb/bsds.html"
-      target="_blank"
-      rel="noopener"
+      href="#top"
+      aria-label="Return to the top of the page"
     >
       <span class="monogram">B</span>
-      <span>Statistical Data Science</span>
+      <span>BSDS at ISI Delhi</span>
     </a>
 
     <nav aria-label="Main navigation">
@@ -41,48 +991,50 @@
       <a href="#admissions">Admissions</a>
       <a href="#reservation">Reservation</a>
       <a href="#past-data">Past data</a>
-      <a href="#centres">Centres</a>
-      <a href="#before-joining">Before you join</a>
+      <a href="#delhi-centre">Delhi Centre</a>
+      <a href="#before-joining">Before joining</a>
       <a href="#about">About</a>
     </nav>
 
     <a
       class="outline-link"
-      href="https://www.isical.ac.in/"
+      href="https://www.isical.ac.in/~deanweb/bsds.html"
       target="_blank"
       rel="noopener"
     >
-      ISI ↗
+      Official BSDS page ↗
     </a>
   </header>
 
+
   <main id="top">
 
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="hero" id="programme">
       <div>
         <p class="eyebrow">
-          An unofficial student guide to the Indian Statistical Institute
+          An unofficial student guide to ISI Delhi
         </p>
 
         <h1>
           Bachelor of<br>
-          Statistical Data Science
+          Statistical Data Science<br>
+          at ISI Delhi
         </h1>
 
         <p class="lede">
-          Understand the admission process, study historical allocation data,
-          compare the three centres and prepare for the programme from a
-          student perspective.
+          A student-led guide to BSDS admissions, historical allocation
+          data, accommodation, campus facilities and student life at the
+          Delhi Centre of the Indian Statistical Institute.
         </p>
 
         <div class="actions">
           <a class="button primary" href="#admissions">
-            Explore admissions
+            Understand admissions
           </a>
 
-          <a class="button" href="#centres">
-            Compare centres
+          <a class="button" href="#delhi-centre">
+            Explore ISI Delhi
           </a>
         </div>
       </div>
@@ -95,65 +1047,69 @@
     </section>
 
 
-    <!-- Programme facts -->
+    <!-- PROGRAMME FACTS -->
     <section class="quick programme-facts">
-      <p class="eyebrow">Programme at a glance</p>
+      <p class="eyebrow">BSDS at ISI Delhi</p>
 
       <div class="quick-grid">
         <div class="fact-card">
-          <span class="fact-number">3</span>
-          <p>Teaching centres</p>
-        </div>
-
-        <div class="fact-card">
           <span class="fact-number">25</span>
-          <p>Students per centre per year</p>
-        </div>
-
-        <div class="fact-card">
-          <span class="fact-number">75</span>
-          <p>Total annual intake</p>
+          <p>Students admitted at the Delhi Centre per year</p>
         </div>
 
         <div class="fact-card">
           <span class="fact-number">4</span>
-          <p>Years of study</p>
+          <p>Years of undergraduate study</p>
+        </div>
+
+        <div class="fact-card">
+          <span class="fact-number">Delhi</span>
+          <p>Centre covered by this student guide</p>
+        </div>
+
+        <div class="fact-card">
+          <span class="fact-number">JEE/CUET</span>
+          <p>Mathematics percentile considered for admission</p>
         </div>
       </div>
     </section>
 
 
-    <!-- Quick navigation -->
+    <!-- QUICK NAVIGATION -->
     <section class="quick">
       <p class="eyebrow">Start with a guide</p>
 
       <div class="quick-grid">
         <a href="#admissions">
-          How admissions work <span>↗</span>
+          How admissions work
+          <span>↗</span>
         </a>
 
         <a href="#past-data">
-          Read past data <span>↗</span>
+          Read past data
+          <span>↗</span>
         </a>
 
-        <a href="#centres">
-          Choose a centre <span>↗</span>
+        <a href="#delhi-centre">
+          Explore ISI Delhi
+          <span>↗</span>
         </a>
 
         <a href="#before-joining">
-          Prepare before joining <span>↗</span>
+          Prepare before joining
+          <span>↗</span>
         </a>
       </div>
     </section>
 
 
-    <!-- Admissions -->
+    <!-- ADMISSIONS -->
     <section class="split" id="admissions">
       <div>
         <p class="label">01 / Admissions</p>
 
         <h2>
-          One process,<br>
+          The admission process,<br>
           made understandable.
         </h2>
       </div>
@@ -161,15 +1117,14 @@
       <div class="copy">
         <p>
           This website is intended primarily for Class XI and XII students
-          interested in pursuing the Bachelor of Statistical Data Science at
-          the Indian Statistical Institute.
+          interested in pursuing the Bachelor of Statistical Data Science
+          at the Indian Statistical Institute.
         </p>
 
         <p>
-          The admission guide will organise official notices into one readable
-          sequence—from checking eligibility and applying, to interpreting
-          merit lists, submitting centre preferences and responding to seat
-          allocations.
+          Admission is conducted for the BSDS programme as a whole. Students
+          later receive a centre according to the applicable allocation
+          process, their merit position, category and submitted preferences.
         </p>
 
         <div class="information-box">
@@ -180,11 +1135,18 @@
           </h3>
 
           <p>
-            The Mathematics percentile used for admission is the higher of the
-            candidate’s eligible JEE Main and CUET-UG Mathematics percentiles,
-            subject to the rules published for the relevant admission cycle.
+            The Mathematics percentile used for admission is the higher of
+            the candidate’s eligible JEE Main and CUET-UG Mathematics
+            percentiles, subject to the official rules for the relevant
+            admission cycle.
           </p>
         </div>
+
+        <p>
+          Always check the latest official admission notice for eligibility,
+          accepted examination years, application dates, document
+          requirements and allocation rules.
+        </p>
 
         <a
           class="text-link"
@@ -198,13 +1160,22 @@
     </section>
 
 
-    <!-- Admission process -->
+    <!-- ADMISSION JOURNEY -->
     <section class="process-section">
-      <p class="label">Typical admission journey</p>
+      <div class="section-heading">
+        <p class="label">Typical admission journey</p>
+
+        <h2>From application to allocation</h2>
+
+        <p>
+          This is a simplified overview. Exact procedures and deadlines
+          should always be confirmed from the official notice for that year.
+        </p>
+      </div>
 
       <div class="process-grid">
         <article>
-          <span class="step-number">01</span>
+          <span class="step-number">STEP 01</span>
           <h3>Check eligibility</h3>
           <p>
             Confirm the academic, subject and examination requirements
@@ -213,90 +1184,80 @@
         </article>
 
         <article>
-          <span class="step-number">02</span>
+          <span class="step-number">STEP 02</span>
           <h3>Apply to ISI</h3>
           <p>
-            Complete the BSDS application and submit the required examination
-            information and supporting documents.
+            Complete the BSDS application and provide the required
+            examination information and supporting documents.
           </p>
         </article>
 
         <article>
-          <span class="step-number">03</span>
+          <span class="step-number">STEP 03</span>
           <h3>Receive a merit position</h3>
           <p>
-            Merit lists are prepared according to the officially announced
-            admission rules and applicable reservation provisions.
+            Merit lists are prepared according to the announced admission
+            rules and applicable reservation provisions.
           </p>
         </article>
 
         <article>
-          <span class="step-number">04</span>
-          <h3>Submit centre preferences</h3>
+          <span class="step-number">STEP 04</span>
+          <h3>Submit preferences</h3>
           <p>
-            Rank Calcutta, Delhi and Bengaluru based on your personal and
-            academic priorities.
+            Centre preferences may affect the centre eventually allocated,
+            subject to merit position, category and seat availability.
           </p>
         </article>
 
         <article>
-          <span class="step-number">05</span>
-          <h3>Follow seat allocation</h3>
+          <span class="step-number">STEP 05</span>
+          <h3>Follow allocation notices</h3>
           <p>
-            Check every allocation notice carefully and respond within the
-            specified deadline.
+            Check every allocation notice carefully and complete the
+            required response within the specified deadline.
           </p>
         </article>
       </div>
     </section>
 
 
-    <!-- Intake -->
-    <section class="dark intake-section">
-      <p class="eyebrow">Annual intake</p>
+    <!-- DELHI INTAKE -->
+    <section class="dark">
+      <p class="eyebrow">Delhi Centre intake</p>
 
       <div class="dark-grid">
         <h2>
-          Three centres.<br>
-          Twenty-five seats each.
+          A small batch<br>
+          of 25 students.
         </h2>
 
         <div>
           <p>
-            The programme is offered at the ISI Calcutta, ISI Delhi and
-            ISI Bengaluru centres.
+            The Bachelor of Statistical Data Science at the ISI Delhi Centre
+            has an annual intake of 25 students.
           </p>
 
           <p>
-            Each centre has an annual intake of 25 students, giving a total
-            annual intake of 75 students across the programme.
+            A small batch can shape classroom interaction, peer learning
+            and the overall student experience. The final category-wise
+            allocation remains subject to official reservation and
+            admission rules.
           </p>
+
+          <div class="intake-highlight">
+            <strong>25</strong>
+            <span>
+              students admitted to the BSDS programme at the Delhi Centre
+              each year
+            </span>
+          </div>
         </div>
-      </div>
-
-      <div class="intake-grid">
-        <article>
-          <p class="label">ISI Calcutta</p>
-          <strong>25</strong>
-          <span>students per year</span>
-        </article>
-
-        <article>
-          <p class="label">ISI Delhi</p>
-          <strong>25</strong>
-          <span>students per year</span>
-        </article>
-
-        <article>
-          <p class="label">ISI Bengaluru</p>
-          <strong>25</strong>
-          <span>students per year</span>
-        </article>
       </div>
     </section>
 
 
-    <!-- Reservation matrix -->
+    <!-- RESERVATION -->
     <section class="reservation-section" id="reservation">
       <div class="section-heading">
         <p class="label">02 / Reservation</p>
@@ -304,15 +1265,16 @@
         <h2>Category-wise seat distribution</h2>
 
         <p>
-          Add the category-wise distribution from the official admission
-          notice for the relevant year. Keep the admission year visible,
-          because the published matrix may change.
+          The reservation matrix should be copied from the official admission
+          notice for the relevant year. Keep the admission year and source
+          visible because the published distribution or allocation rules
+          may change.
         </p>
       </div>
 
       <div class="table-note">
         <strong>Admission year:</strong>
-        <span>2026–27</span>
+        Replace this text with the relevant admission session
       </div>
 
       <div class="table-wrapper">
@@ -320,109 +1282,93 @@
           <thead>
             <tr>
               <th scope="col">Category</th>
-              <th scope="col">ISI Bangalore</th>
-              <th scope="col">ISI Calcutta</th>
-              <th scope="col">ISI Delhi</th>
-              <th scope="col">Total</th>
+              <th scope="col">Delhi Centre seats</th>
+              <th scope="col">Notes</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <th scope="row">Unreserved</th>
+              <th scope="row">General / Unreserved</th>
               <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>28</td>
+              <td>Add official figure</td>
             </tr>
 
             <tr>
               <th scope="row">EWS</th>
               <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>7</td>
+              <td>Add official figure</td>
             </tr>
 
             <tr>
               <th scope="row">OBC-NCL</th>
               <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>20</td>
+              <td>Add official figure</td>
             </tr>
 
             <tr>
               <th scope="row">SC</th>
               <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>11</td>
+              <td>Add official figure</td>
             </tr>
 
             <tr>
               <th scope="row">ST</th>
               <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>5</td>
+              <td>Add official figure</td>
             </tr>
 
             <tr>
               <th scope="row">PwBD</th>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>4</td>
+              <td>As applicable</td>
+              <td>Add the official horizontal-reservation rule</td>
             </tr>
           </tbody>
 
           <tfoot>
             <tr>
-              <th scope="row">Total intake</th>
+              <th scope="row">Total Delhi intake</th>
               <td>25</td>
-              <td>25</td>
-              <td>25</td>
-              <td>75</td>
+              <td>Annual intake</td>
             </tr>
           </tfoot>
         </table>
       </div>
 
       <p class="source-note">
-        Source: <a href="https://admission.isical.ac.in/Documents/IsiAdmission2026/ISI-Prospectus-2026-27.pdf">Prospectus</a>
-        
+        Source: Add the title, date and link of the official admission notice.
+        Do not treat this editable table as an official announcement.
       </p>
     </section>
 
 
-    <!-- Past data -->
+    <!-- PAST DATA -->
     <section class="split" id="past-data">
       <div>
         <p class="label">03 / Past data</p>
 
         <h2>
-          Read historical data<br>
-          in context.
+          Historical data,<br>
+          read in context.
         </h2>
       </div>
 
       <div class="copy">
         <p>
-          This section will contain historical merit lists, seat-allocation
-          notices, category-wise closing positions and information about
-          candidates who accepted or declined seats.
+          This section will organise past merit lists and seat-allocation
+          notices, with special attention to how students were allocated
+          seats at the Delhi Centre.
         </p>
 
         <p>
-          The purpose is to make past admission patterns easier to understand.
-          Historical ranks and allocations do not guarantee the outcome of a
-          future admission cycle.
+          Historical ranks can help applicants understand previous admission
+          cycles, but they cannot predict or guarantee a Delhi seat in a
+          future year.
         </p>
 
         <div class="data-links">
           <a href="#">
-            Merit-list archive
+            BSDS merit-list archive
             <span>Coming soon</span>
           </a>
 
@@ -432,7 +1378,12 @@
           </a>
 
           <a href="#">
-            Closing-rank analysis
+            Delhi allocation analysis
+            <span>Coming soon</span>
+          </a>
+
+          <a href="#">
+            Candidates declining seats
             <span>Coming soon</span>
           </a>
         </div>
@@ -440,305 +1391,148 @@
     </section>
 
 
-    <!-- Centres -->
-    <section class="centres-section" id="centres">
+    <!-- DELHI CENTRE -->
+    <section class="delhi-section" id="delhi-centre">
       <div class="section-heading">
-        <p class="label">04 / Centres</p>
+        <p class="label">04 / ISI Delhi</p>
 
-        <h2>Compare the three centres</h2>
+        <h2>Studying BSDS at the Delhi Centre</h2>
 
         <p>
-          All three centres offer the same programme, but location,
-          accommodation, campus environment, connectivity and everyday student
-          life may differ.
+          This section focuses on the academic environment, accommodation,
+          facilities, connectivity and everyday experience of studying at
+          the Delhi Centre.
         </p>
       </div>
 
-      <div class="centre-grid">
+      <div class="delhi-grid">
+        <article class="delhi-card featured">
+          <span class="number">01 / PROGRAMME</span>
 
-        <!-- Calcutta -->
-        <article class="centre-card">
-          <div class="centre-heading">
-            <p class="label">Centre 01</p>
-            <h3>ISI Calcutta</h3>
-            <p class="programme-name">
-              Bachelor of Statistical Data Science
-            </p>
-          </div>
+          <h3>
+            Bachelor of Statistical Data Science
+          </h3>
 
-          <div class="centre-intake">
-            <strong>25</strong>
-            <span>students per year</span>
-          </div>
-
-          <dl class="centre-details">
-            <div>
-              <dt>Location</dt>
-              <dd>
-                Baranagar, Kolkata, West Bengal. Add details about the locality,
-                nearby areas and access to the city.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Accommodation</dt>
-              <dd>
-                Add information about hostel availability, eligibility,
-                room arrangements, mess facilities and nearby alternatives.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Campus facilities</dt>
-              <dd>
-                Add verified information about the library, classrooms,
-                laboratories, sports facilities, medical support and dining.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Connectivity</dt>
-              <dd>
-                Add the nearest metro or railway stations, airport distance
-                and common travel routes.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Academic environment</dt>
-              <dd>
-                Add information about the teaching environment, faculty
-                interaction, seminars and academic opportunities.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Student perspective</dt>
-              <dd>
-                Add practical observations about campus life, expenses,
-                weather and adapting to Kolkata.
-              </dd>
-            </div>
-          </dl>
+          <p>
+            Add first-hand details about classes, course structure, batch
+            size, faculty interaction, workload and the general academic
+            environment at ISI Delhi.
+          </p>
         </article>
 
+        <article class="delhi-card">
+          <span class="number">02 / LOCATION</span>
 
-        <!-- Delhi -->
-        <article class="centre-card">
-          <div class="centre-heading">
-            <p class="label">Centre 02</p>
-            <h3>ISI Delhi</h3>
-            <p class="programme-name">
-              Bachelor of Statistical Data Science
-            </p>
-          </div>
+          <h3>Location and connectivity</h3>
 
-          <div class="centre-intake">
-            <strong>25</strong>
-            <span>students per year</span>
-          </div>
-
-          <dl class="centre-details">
-            <div>
-              <dt>Location</dt>
-              <dd>
-                New Delhi. Add details about the locality, surrounding areas
-                and access to important parts of the city.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Accommodation</dt>
-              <dd>
-                Add information about hostel availability, eligibility,
-                room arrangements, food and nearby rental options.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Campus facilities</dt>
-              <dd>
-                Add verified information about classrooms, library access,
-                laboratories, recreation and student support.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Connectivity</dt>
-              <dd>
-                Add the nearest metro stations, railway stations, airport
-                distance and common routes to the centre.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Academic environment</dt>
-              <dd>
-                Add information about faculty interaction, academic culture,
-                seminars and opportunities available in Delhi.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Student perspective</dt>
-              <dd>
-                Add practical observations about living costs, travel,
-                weather and day-to-day student life.
-              </dd>
-            </div>
-          </dl>
+          <p>
+            Add the campus address, information about the surrounding
+            locality, nearby markets, metro connectivity, railway stations,
+            airport access and typical travel routes.
+          </p>
         </article>
 
+        <article class="delhi-card" id="accommodation">
+          <span class="number">03 / ACCOMMODATION</span>
 
-        <!-- Bengaluru -->
-        <article class="centre-card">
-          <div class="centre-heading">
-            <p class="label">Centre 03</p>
-            <h3>ISI Bengaluru</h3>
-            <p class="programme-name">
-              Bachelor of Statistical Data Science
-            </p>
-          </div>
+          <h3>Where students stay</h3>
 
-          <div class="centre-intake">
-            <strong>25</strong>
-            <span>students per year</span>
-          </div>
-
-          <dl class="centre-details">
-            <div>
-              <dt>Location</dt>
-              <dd>
-                Bengaluru, Karnataka. Add information about the locality,
-                surrounding neighbourhoods and access to the city.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Accommodation</dt>
-              <dd>
-                Add information about hostel availability, eligibility,
-                rooms, food arrangements and nearby alternatives.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Campus facilities</dt>
-              <dd>
-                Add verified information about classrooms, library facilities,
-                laboratories, sports and student services.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Connectivity</dt>
-              <dd>
-                Add information about nearby metro or bus connections,
-                railway stations and airport travel.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Academic environment</dt>
-              <dd>
-                Add information about academic culture, faculty interaction,
-                seminars and connections with Bengaluru’s wider ecosystem.
-              </dd>
-            </div>
-
-            <div>
-              <dt>Student perspective</dt>
-              <dd>
-                Add practical observations about expenses, traffic, weather,
-                food and adapting to Bengaluru.
-              </dd>
-            </div>
-          </dl>
+          <p>
+            Add verified information about hostel or accommodation
+            availability, eligibility, room arrangements, food, expenses
+            and nearby alternatives used by students.
+          </p>
         </article>
 
+        <article class="delhi-card">
+          <span class="number">04 / CAMPUS FACILITIES</span>
+
+          <h3>Academic and everyday facilities</h3>
+
+          <p>
+            Add information about classrooms, the library, computer
+            facilities, study spaces, dining, sports, medical assistance
+            and other services available to students.
+          </p>
+        </article>
+
+        <article class="delhi-card">
+          <span class="number">05 / ACADEMIC LIFE</span>
+
+          <h3>Classes, workload and support</h3>
+
+          <p>
+            Add your experience of the timetable, assignments, examinations,
+            projects, faculty accessibility, collaboration and the pace of
+            the programme.
+          </p>
+        </article>
+
+        <article class="delhi-card">
+          <span class="number">06 / STUDENT LIFE</span>
+
+          <h3>Life beyond the classroom</h3>
+
+          <p>
+            Add practical observations about classmates, events, societies,
+            food, expenses, weather, travel and adjusting to student life
+            in Delhi.
+          </p>
+        </article>
       </div>
     </section>
 
 
-    <!-- Centre-choice framework -->
+    <!-- FIRST-HAND INFORMATION -->
     <section class="dark">
-      <p class="eyebrow">How to choose a centre</p>
+      <p class="eyebrow">How to read this guide</p>
 
       <div class="dark-grid">
         <h2>
-          Look beyond<br>
-          a simple ranking.
+          Official facts.<br>
+          First-hand context.<br>
+          Clear separation.
         </h2>
 
         <div>
           <p>
-            There may not be one centre that is objectively best for every
-            student. Your decision can depend on accommodation, distance from
-            home, travel costs, campus environment and personal comfort.
+            Official notices, published data and programme rules will be
+            cited and dated. Personal experiences and opinions will be
+            identified clearly.
           </p>
 
           <p>
-            Compare centres using verified information, then decide which
-            differences genuinely matter to you.
+            This separation matters: an official rule applies broadly,
+            while one student’s experience may depend on the year, course,
+            instructor or personal circumstances.
           </p>
-        </div>
-      </div>
-
-      <div class="comparison-grid">
-        <div>
-          <span>01</span>
-          <p>Academic environment</p>
-        </div>
-
-        <div>
-          <span>02</span>
-          <p>Accommodation</p>
-        </div>
-
-        <div>
-          <span>03</span>
-          <p>Campus facilities</p>
-        </div>
-
-        <div>
-          <span>04</span>
-          <p>Location and connectivity</p>
-        </div>
-
-        <div>
-          <span>05</span>
-          <p>Living expenses</p>
-        </div>
-
-        <div>
-          <span>06</span>
-          <p>Distance from home</p>
         </div>
       </div>
     </section>
 
 
-    <!-- Before joining -->
-    <section class="split" id="before-joining">
-      <div>
-        <p class="label">05 / Before you join</p>
+    <!-- BEFORE JOINING -->
+    <section class="before-section" id="before-joining">
+      <div class="before-grid">
+        <div>
+          <p class="label">05 / Before joining</p>
 
-        <h2>
-          Arrive curious,<br>
-          not overwhelmed.
-        </h2>
-      </div>
+          <h2>
+            Arrive curious,<br>
+            not overwhelmed.
+          </h2>
 
-      <div class="copy">
-        <p>
-          You do not need to finish an entire university curriculum before
-          joining. A strong foundation and a willingness to learn are more
-          useful than rushing through advanced material.
-        </p>
+          <p>
+            You do not need to complete an entire university curriculum
+            before joining. A strong foundation and willingness to learn
+            are more valuable than rushing through advanced material.
+          </p>
+        </div>
 
         <div class="preparation-list">
           <article>
             <h3>Mathematics</h3>
+
             <p>
               Revise algebra, functions, coordinate geometry, calculus and
               basic combinatorial reasoning.
@@ -747,25 +1541,38 @@
 
           <article>
             <h3>Programming</h3>
+
             <p>
-              Basic familiarity with variables, conditionals, loops and
-              functions in Python or R can make the transition easier.
+              Familiarity with variables, conditionals, loops and functions
+              in Python or R can make the transition easier.
             </p>
           </article>
 
           <article>
             <h3>Statistics</h3>
+
             <p>
               Develop intuition for data, averages, variation, probability
-              and interpreting graphs.
+              and the interpretation of tables and graphs.
             </p>
           </article>
 
           <article>
             <h3>Study habits</h3>
+
             <p>
               Be prepared for proof-based mathematics, programming practice,
-              projects and learning concepts independently.
+              projects and learning some concepts independently.
+            </p>
+          </article>
+
+          <article>
+            <h3>Moving to Delhi</h3>
+
+            <p>
+              Confirm accommodation, estimate monthly expenses, understand
+              your route to the centre and prepare the documents required
+              during registration.
             </p>
           </article>
         </div>
@@ -773,41 +1580,14 @@
     </section>
 
 
-    <!-- Use of resource -->
-    <section class="dark">
-      <p class="eyebrow">How to use this resource</p>
-
-      <div class="dark-grid">
-        <h2>
-          Official facts.<br>
-          Student context.<br>
-          Clear separation.
-        </h2>
-
-        <div>
-          <p>
-            Official notices and published data will be cited and dated.
-            Commentary, interpretation and personal advice will be clearly
-            identified so that readers can distinguish evidence from opinion.
-          </p>
-
-          <p>
-            Past ranks and allocations provide context, but cannot guarantee
-            what will happen in a future admission cycle.
-          </p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Author -->
+    <!-- AUTHOR -->
     <section class="split" id="about">
       <div>
         <p class="label">About the author</p>
 
         <h2>
-          Built from inside<br>
-          the programme.
+          Written from inside<br>
+          the Delhi Centre.
         </h2>
       </div>
 
@@ -815,13 +1595,21 @@
         <h3>Siddhant Shrivastava</h3>
 
         <p>
-          This website is maintained by Siddhant Shrivastava, a student in the
-          Bachelor of Statistical Data Science programme.
+          This website is maintained by Siddhant Shrivastava, a student in
+          the Bachelor of Statistical Data Science programme at the ISI
+          Delhi Centre.
         </p>
 
         <p>
           The goal is to help prospective students navigate scattered
-          information and make a more informed decision before joining.
+          admission information and understand what studying BSDS at
+          ISI Delhi is actually like.
+        </p>
+
+        <p>
+          Information based on personal experience will be presented as
+          student perspective, while official facts and historical data
+          will be supported by dated sources.
         </p>
 
         <a
@@ -838,21 +1626,11 @@
   </main>
 
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="brand">
       <span class="monogram">B</span>
-
-      <span>
-        <a
-          class="outline-link"
-          href="https://bsds-isi.github.io/"
-          target="_blank"
-          rel="noopener"
-        >
-          Statistical Data Science
-        </a>
-      </span>
+      <span>BSDS at ISI Delhi</span>
     </div>
 
     <div>
@@ -861,12 +1639,15 @@
       <p>
         This is an unofficial student resource and is not affiliated with,
         endorsed by or maintained by the Indian Statistical Institute.
-        Always refer to the latest official admission notice before making
-        any decision.
+        Always refer to the latest official notice before making an
+        admission-related decision.
       </p>
     </div>
 
-    <p>Maintained by Siddhant Shrivastava</p>
+    <p>
+      Maintained by<br>
+      Siddhant Shrivastava
+    </p>
   </footer>
 
 </body>
